@@ -1,0 +1,40 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+group 'sh.okx.gottfried'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://repo.opencollab.dev/maven-releases/' }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    implementation 'com.github.steveice10:mcprotocollib:1.18.2-3'
+    implementation 'com.electronwill.night-config:toml:3.6.0'
+    implementation 'net.kyori:adventure-text-serializer-plain:4.2.0'
+    implementation "io.reactivex.rxjava3:rxjava:3.1.4"
+}
+
+application {
+    mainClass = 'sh.okx.gottfried.Gottfried'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+distributions {
+    main {
+        contents {
+            from 'src/main/resources'
+        }
+    }
+}
